@@ -25,8 +25,10 @@ public class Main {
             baskets[I-1] = baskets[J-1];
             baskets[J-1] = temp;
         }
-        for (int i = 0; i < baskets.length; i++)
-            System.out.print(baskets[i] + " ");
+
+        for (int basket : baskets) {
+            System.out.print(basket + " ");
+        }
     }
 }
 
