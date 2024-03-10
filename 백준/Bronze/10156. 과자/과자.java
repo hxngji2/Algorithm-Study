@@ -14,7 +14,7 @@ public class Main {
 
         int price = k * n;
 
-        if (price >= m) {
+        if (price > m) {
             System.out.println(price - m);
         } else {
             System.out.println(0);
