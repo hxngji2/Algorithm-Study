@@ -6,21 +6,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        char[] ch = br.readLine().toCharArray();
+        String s = br.readLine();
 
         boolean pelindrome = true;
-
-        for (int i = 0; i < ch.length / 2; i++) {
-            if (ch[i] != ch[ch.length - 1 - i]) {
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
                 pelindrome = false;
-                break;
-            } else
-                pelindrome = true;
+            }
         }
-
-        if (pelindrome)
-            System.out.println(1);
-        else
-            System.out.println(0);
+        System.out.println(pelindrome ? 1 : 0);
     }
 }
