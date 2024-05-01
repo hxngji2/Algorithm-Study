@@ -7,8 +7,8 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         StringBuilder sb = new StringBuilder();
 
-        int min = Integer.parseInt(st.nextToken());
-        int max = Integer.parseInt(st.nextToken());
+        long min = Long.parseLong(st.nextToken());
+        long max = Long.parseLong(st.nextToken());
 
         if(min < max){
             for(int i = 0; i < max - min - 1; i++){
