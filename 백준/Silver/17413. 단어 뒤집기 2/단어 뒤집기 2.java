@@ -26,7 +26,7 @@ public class Main {
             else {
                 int j = i;
                 while(j < word.length() && word.charAt(j) != ' ' && word.charAt(j) != '<'){
-                    deque.addLast(word.charAt(j));
+                    deque.offerLast(word.charAt(j));
                     j++;
                 }
                 int k = deque.size();
