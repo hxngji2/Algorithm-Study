@@ -14,7 +14,7 @@ public class Main {
       for (int j = 0; j < N - i; j++) {
         sb.append(" ");
       }
-      for (int j = 0; j < N - (N-i); j++) {
+      for (int j = 0; j < i; j++) {
         sb.append("*");
       }
       sb.append("\n");
