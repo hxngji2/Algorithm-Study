@@ -10,21 +10,13 @@ public class Main {
     int N = Integer.parseInt(br.readLine());
 
     for (int i = 1; i <= N; i++) {
-      for (int j = 1; j <= N - i; j++) {
-        sb.append(" ");
-      }
-      for (int j = 1; j < 2 * i; j++) {
-        sb.append("*");
-      }
+      sb.append(" ".repeat(Math.max(0, N - i)));
+      sb.append("*".repeat(Math.max(0, 2 * i - 1)));
       sb.append("\n");
     }
     for (int i = 1; i < N; i++) {
-      for (int j = 0; j < i; j++) {
-        sb.append(" ");
-      }
-      for (int j = 1; j < (2 * N) - (2 * i); j++) {
-        sb.append("*");
-      }
+      sb.append(" ".repeat(i));
+      sb.append("*".repeat(Math.max(0, (2 * N) - (2 * i) - 1)));
       sb.append("\n");
     }
     System.out.println(sb);
