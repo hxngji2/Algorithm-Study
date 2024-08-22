@@ -10,27 +10,15 @@ public class Main {
     int N = Integer.parseInt(br.readLine());
 
     for (int i = 1; i <= N; i++) {
-      for (int j = 0; j < i; j++) {
-        sb.append("*");
-      }
-      for (int j = 0; j < 2*(N-i); j++) {
-        sb.append(" ");
-      }
-      for (int j = 0; j < i; j++) {
-        sb.append("*");
-      }
+      sb.append("*".repeat(i));
+      sb.append(" ".repeat(2 * (N - i)));
+      sb.append("*".repeat(i));
       sb.append("\n");
     }
     for (int i = 1; i < N; i++) {
-      for (int j = 0; j < N-i; j++) {
-        sb.append("*");
-      }
-      for (int j = 0; j < 2*i; j++) {
-        sb.append(" ");
-      }
-      for (int j = 0; j < N-i; j++) {
-        sb.append("*");
-      }
+      sb.append("*".repeat(N - i));
+      sb.append(" ".repeat(2 * i));
+      sb.append("*".repeat(N - i));
       sb.append("\n");
     }
     System.out.println(sb);
