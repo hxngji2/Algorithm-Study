@@ -10,7 +10,7 @@ public class Main {
     int N = Integer.parseInt(br.readLine());
 
     for (int i = 1; i <= N; i++) {
-      sb.append(" ".repeat(N-i));
+      sb.append(" ".repeat(Math.max(0, N - i)));
       sb.append("*");
       for (int j = 1; j < i; j++) {
         sb.append(" ");
