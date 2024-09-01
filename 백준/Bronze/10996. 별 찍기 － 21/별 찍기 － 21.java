@@ -5,7 +5,6 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
     int N = Integer.parseInt(br.readLine());
 
     if (N == 1) {
@@ -13,15 +12,20 @@ public class Main {
       return;
     }
 
-    String star = "* ";
-    String tempStar = "";
-    int count = N / 2;
+    StringBuilder sb = new StringBuilder();
+    StringBuilder temp = new StringBuilder();
+      
+    String star = "* ".repeat(N / 2);
     if (N % 2 != 0) {
-      tempStar = star.repeat(count + 1) + "\n " + star.repeat(count) + "\n";
+      temp.append(star).append("* \n");
     } else {
-      tempStar = star.repeat(count) + "\n " + star.repeat(count) + "\n";
+      temp.append(star).append("\n");
     }
+    temp.append(" ").append(star);
 
-    System.out.println(tempStar.repeat(N));
+    for (int i = 0; i < N; i++) {
+      sb.append(temp).append("\n");
+    }
+    System.out.println(sb);
   }
 }
