@@ -15,8 +15,8 @@ public class Main {
     StringBuilder sb = new StringBuilder();
     StringBuilder temp = new StringBuilder();
       
-    String star = "* ".repeat(N / 2);
-    if (N % 2 != 0) {
+    String star = "* ".repeat(N/2);
+    if (N%2!=0) {
       temp.append(star).append("* \n");
     } else {
       temp.append(star).append("\n");
