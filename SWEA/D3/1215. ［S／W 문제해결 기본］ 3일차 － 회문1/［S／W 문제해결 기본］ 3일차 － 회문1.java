@@ -2,29 +2,29 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Solution {
-
-  static final int ARRAY_SIZE = 8;
-
+	static final int ARRAY_SIZE = 8;
+    
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     int T = 10;
 
     for (int tc = 1; tc <= T; tc++) {
-      int length = Integer.parseInt(br.readLine());
+      int N = Integer.parseInt(br.readLine());
       char[][] arr = new char[ARRAY_SIZE][ARRAY_SIZE];
-      for (int i = 0; i < arr.length; i++) {
-        String str = br.readLine();
-        for (int j = 0; j < arr.length; j++) {
-          arr[i][j] = str.charAt(j);
+      int count = 0;
+      for (int i = 0; i < 8; i++) {
+        String line = br.readLine();
+        for (int j = 0; j < 8; j++) {
+          arr[i][j] = line.charAt(j);
         }
       }
-      int count = 0;
       for (int i = 0; i < arr.length; i++) {
         for (int j = 0; j < arr.length; j++) {
-          if (col_palindrome(i, j, length, arr)) {
+          if (col_Palindrome(i, j, N, arr)) {
             count++;
           }
-          if (row_palindrome(i, j, length, arr)) {
+          if (row_Palindrome(i, j, N, arr)) {
             count++;
           }
         }
@@ -33,7 +33,7 @@ public class Solution {
     }
   }
 
-  public static boolean col_palindrome(int i, int j, int length, char[][] arr) {
+  public static boolean row_Palindrome(int i, int j, int length, char[][] arr) {
     if (j + length - 1 >= 8) {
       return false;
     }
@@ -45,7 +45,7 @@ public class Solution {
     return true;
   }
 
-  public static boolean row_palindrome(int i, int j, int length, char[][] arr) {
+  public static boolean col_Palindrome(int i, int j, int length, char[][] arr) {
     if (i + length - 1 >= 8) {
       return false;
     }
