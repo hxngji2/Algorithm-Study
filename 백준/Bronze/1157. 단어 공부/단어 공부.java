@@ -1,37 +1,39 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        int[] arr = new int[26];
 
-        int[] alphabet = new int[26];
-        String s = br.readLine();
+        String str = br.readLine();
 
-        for (int i = 0; i < s.length(); i++) {
-            if ('A' <= s.charAt(i) && s.charAt(i) <= 'Z') {
-                alphabet[s.charAt(i) - 'A']++;
-            }
-            else {
-                alphabet[s.charAt(i) - 'a']++;
-            }
-        }
-
-        int max = -1;
-        char ch = '?';
-
-        for (int i = 0; i < 26; i++) {
-            if (alphabet[i] > max) {
-                max = alphabet[i];
-                ch = (char) (i + 65);
-            } else if (alphabet[i] == max) {
-                ch = '?';
+        for(int i = 0; i < str.length(); i++){
+            if(str.charAt(i) >= 'a' && str.charAt(i) <= 'z'){
+                arr[str.charAt(i)-'a']++;
+            }else if(str.charAt(i) >= 'A' && str.charAt(i) <= 'Z'){
+                arr[str.charAt(i)-'A']++;
             }
         }
 
-        System.out.print(ch);
+        int index = 0;
+        boolean flag = false;
+        int max = arr[0];
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] == max){
+                flag = true;
+            } else if(arr[i] > max){
+                max = arr[i];
+                index = i;
+                flag = false;
+            }
+        }
 
+        if(flag == true) {
+            System.out.println("?");
+        } else {
+            System.out.println((char)(index + 'A'));
+        }
     }
 }
