@@ -19,12 +19,10 @@ public class Main {
 
         int index = 0;
         boolean flag = false;
-        int max = arr[0];
         for(int i = 1; i < arr.length; i++){
-            if(arr[i] == max){
+            if(arr[i] == arr[index]){
                 flag = true;
-            } else if(arr[i] > max){
-                max = arr[i];
+            } else if(arr[i] > arr[index]){
                 index = i;
                 flag = false;
             }
