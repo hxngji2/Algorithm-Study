@@ -14,7 +14,7 @@ public class Solution {
 
             StringTokenizer st = new StringTokenizer(br.readLine());
 
-            int[] counts = new int[1001];
+            int[] counts = new int[101];
 
             for(int i = 1; i <= 1000; i++){
                 int num = Integer.parseInt(st.nextToken());
@@ -23,7 +23,7 @@ public class Solution {
 
             int index = 1;
 
-            for(int i = 1; i <= 1000; i++){
+            for(int i = 1; i <= 100; i++){
                 if(counts[i] > counts[0]){
                     index = i;
                     counts[0] = counts[i];
