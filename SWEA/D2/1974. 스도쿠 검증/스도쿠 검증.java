@@ -19,62 +19,55 @@ public class Solution {
                 }
             }
 
-            boolean isCorrect = true;
-
-            int[] rowNums = new int[10];
-
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    rowNums[sudoku[i][j]]++;
-                }
-
-                for (int j = 1; j <= 9; j++) {
-                    if (rowNums[j] != 1) {
-                        isCorrect = false;
-                        break;
-                    }
-                }
-                rowNums = new int[10];
-            }
-
-            int[] colNums = new int[10];
-
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    colNums[sudoku[j][i]]++;
-                }
-
-                for (int j = 1; j <= 9; j++) {
-                    if (colNums[j] != 1) {
-                        isCorrect = false;
-                        break;
-                    }
-                }
-                colNums = new int[10];
-            }
-
-            int[] boxNums = new int[10];
-
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    for (int k = i * 3; k < i*3+3; k++) {
-                        for (int o = j * 3; o < j*3+3; o++) {
-                            boxNums[sudoku[k][o]]++;
-                        }
-                    }
-                    for (int k = 1; k <= 9; k++) {
-                        if (boxNums[k] != 1) {
-                            isCorrect = false;
-                            break;
-                        }
-                    }
-                    boxNums = new int[10];
-                }
-            }
-
-            sb.append(String.format("#%d %d\n", tc, isCorrect ? 1 : 0));
+            sb.append(String.format("#%d %d\n", tc, isValidSudoku(sudoku) ? 1 : 0));
         }
 
         System.out.println(sb);
+    }
+
+    public static boolean isValidSudoku(int[][] sudoku) {
+        return checkRows(sudoku) && checkColumns(sudoku) && checkBox(sudoku);
+    }
+
+    public static boolean checkRows(int[][] sudoku) {
+
+        for (int i = 0; i < 9; i++) {
+            int[] usedCnt = new int[10];
+            for (int j = 0; j < 9; j++) {
+                usedCnt[sudoku[i][j]]++;
+                if (usedCnt[sudoku[i][j]] > 1)
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean checkColumns(int[][] sudoku) {
+        for (int i = 0; i < 9; i++) {
+            int[] usedCnt = new int[10];
+            for (int j = 0; j < 9; j++) {
+                usedCnt[sudoku[j][i]]++;
+                if (usedCnt[sudoku[j][i]] > 1)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkBox(int[][] sudoku) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int[] usedCnt = new int[10];
+                for (int k = i * 3; k < i * 3 + 3; k++) {
+                    for (int o = j * 3; o < j * 3 + 3; o++) {
+                        usedCnt[sudoku[k][o]]++;
+                        if (usedCnt[sudoku[k][o]] > 1)
+                            return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }
