@@ -29,17 +29,25 @@ public class Solution {
                 b[i] = Integer.parseInt(st.nextToken());
             }
 
-            int[] shortArr = (n <= m) ? a : b;
-            int[] longArr = (n <= m) ? b : a;
-
             int max = Integer.MIN_VALUE;
 
-            for (int i = 0; i <= longArr.length - shortArr.length; i++) {
+            if (n == m) {
                 int sum = 0;
-                for (int j = 0; j < shortArr.length; j++) {
-                    sum += shortArr[j] * longArr[i + j];
+                for (int i = 0; i < n; i++) {
+                    sum += a[i] * b[i];
                 }
-                max = Math.max(max, sum);
+                max = sum;
+            } else {
+                int[] shortArr = (n < m) ? a : b;
+                int[] longArr = (n < m) ? b : a;
+
+                for (int i = 0; i <= longArr.length - shortArr.length; i++) {
+                    int sum = 0;
+                    for (int j = 0; j < shortArr.length; j++) {
+                        sum += shortArr[j] * longArr[i + j];
+                    }
+                    max = Math.max(max, sum);
+                }
             }
 
             sb.append(String.format("#%d %d\n", tc, max));
