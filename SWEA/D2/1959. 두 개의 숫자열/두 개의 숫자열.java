@@ -29,8 +29,8 @@ public class Solution {
                 b[i] = Integer.parseInt(st.nextToken());
             }
 
-            int[] shortArr = (n < m) ? a : b;
-            int[] longArr = (n < m) ? b : a;
+            int[] shortArr = (n <= m) ? a : b;
+            int[] longArr = (n <= m) ? b : a;
 
             int max = Integer.MIN_VALUE;
 
