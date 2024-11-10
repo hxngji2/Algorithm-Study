@@ -3,36 +3,37 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-  public static void main(String[] args) throws Exception {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        for (int tc = 1; tc <= 10; tc++) {
+            int n = Integer.parseInt(br.readLine());
 
-    int T = 10;
-    for (int tc = 1; tc <= T; tc++) {
-      int size = Integer.parseInt(br.readLine());
-      int[][] arr = new int[size][size];
-      for (int i = 0; i < size; i++) {
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int j = 0; j < size; j++) {
-          arr[i][j] = Integer.parseInt(st.nextToken());
-        }
-      }
+            int[][] board = new int[n][n];
 
-      int count = 0;
-      for (int i = 0; i < arr.length; i++) { 
-        int last = 0;
-        for (int j = 0; j < arr.length; j++) {
-          if (arr[j][i] == 1) {
-            last = 1;
-          } else if (arr[j][i] == 2) {
-            if (last == 1) {
-              count++;
+            for (int i = 0; i < n; i++) {
+                StringTokenizer st = new StringTokenizer(br.readLine());
+                for (int j = 0; j < n; j++) {
+                    board[i][j] = Integer.parseInt(st.nextToken());
+                }
             }
-            last = 2;
-          }
+
+            int ans = 0;
+            for (int i = 0; i < n; i++) {
+                int prev = 0;
+                for (int j = 0; j < n; j++) {
+                    if (board[j][i] != 0) {
+                        if (board[j][i] == 2 && prev == 1) {
+                            ans += 1;
+                        }
+                        prev = board[j][i];
+                    }
+                }
+            }
+            sb.append(String.format("#%d %d\n",tc, ans));
+
         }
-      }
-      System.out.println("#" + tc + " " + count);
+        System.out.println(sb);
     }
-  }
 }
