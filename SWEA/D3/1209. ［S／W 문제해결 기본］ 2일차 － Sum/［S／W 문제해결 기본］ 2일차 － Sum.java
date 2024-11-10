@@ -22,7 +22,7 @@ public class Solution {
             int crossSum2 = 0;
             for (int i = 0; i < 100; i++) {
                 crossSum1 += board[i][i];
-                crossSum2 += board[i][99 - 1];
+                crossSum2 += board[i][99 - i];
 
                 int rowSum = 0;
                 int colSum = 0;
